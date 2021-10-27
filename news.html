@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney | News</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            font-size: 14px;
+        }
+        body{
+            width: 1263px;
+        }
+        ul{
+            list-style: none;
+        }
+        #navbar{
+            width: 1253px;
+            height: 63px;
+            margin-left: 10px;
+        }
+        #navbar .logo{
+            width: 114px;
+            height: 100%;
+            padding: 15px 8px 7px 11px;
+            float: left;
+        }
+        #navbar .logo>a>img{
+            width: 100%;
+            height: 100%;
+        }
+        #navbar .mainmenu{
+            width: 780px;
+            height: 63px;
+            float: left;
+        }
+        #navbar .mainmenu>ul{
+            height: 100%;
+        }
+        #navbar .mainmenu>ul>li{
+            height: 100%;
+            float: left;
+            /*background-color: red;*/
+            text-transform: uppercase;
+            font-weight: bold;
+            /*border:1px solid yellow;*/
+            padding: 25px 2px 0px 11px;
+            position: relative;
+        }
+        #navbar .mainmenu>ul>li>a{
+            color: #222222;
+            text-decoration: none;
+            padding: 12px 12px 10px;
+        }
+        #navbar .mainmenu>ul>li>a:hover{
+            color: #007bbd;
+        }
+        #navbar .mainmenu>ul>li:hover{
+            color: #007bbd;
+        }
+        #navbar .mainmenu>ul>li::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #007bbd;
+            transition: width .3s;
+        }
+        #navbar .mainmenu>ul>li:hover::after {
+            width: 100%;
+        }
+        #navbar .mainmenu>ul>li>ul{
+            list-style-type:none;
+            position: absolute;
+            left: -10px;
+            top: 64px;
+            display:none;
+            background:#232B2D;
+            z-index: 1;
+            padding: 15px 25px;
+            width: max-content;
+        }
+        #navbar .mainmenu>ul>li:hover>ul{
+            display: block;
+            background-color: #232B2D;
+        }
+        #navbar .mainmenu>ul>li>ul>li{
+            padding: 10px 5px;
+        }
+        #navbar .mainmenu>ul>li>ul>li>a{
+            color: white;
+            text-decoration: none;
+            text-transform: none;
+            font-weight: 850;
+            font-size: 0.9rem;
+        }
+        #navbar .mainmenu>ul>li>ul>li>a:hover{
+            color: #33b1ff;
+            padding-left: 10px;
+            border-left: 2px solid #3ca0e7;
+            transition: all 0.3s ease;
+        }
+        #navbar .search{
+            float:left;
+            width:335px;
+            height:40px;
+            margin-top:13px;
+            background: #f5f5f5;
+            border-radius:5px;
+            padding: 10px 10px;
+            border: 1px solid #707070;
+            font-size: 14px;
+        }
+        #navbar .search>input{
+            background:#f5f5f5;
+            color: #707070;
+            border:none;
+            display: block;
+            float:left;
+            width: 287px;
+            padding-right: 10px;
+        }
+        #navbar .search>input:focus{
+            outline: none;
+        }
+        #navbar .search>span{
+            color:#007bbd;
+            font-size:1.25rem;
+            display:block;
+            float:left;
+            margin-left: 4px;
+        }
+        #news{
+            background-color: #f1f2f3;
+            text-align: center;
+            color: black;
+            font-size: 35px;
+            padding-top: 30px;
+            font-weight: bold;
+        }
+        #news>.bignews>ul{
+            display: block;
+            float: left;
+            height: 420px;
+            width: 1105px;
+            margin: 10px 105px;
+        }
+        #news>.bignews>ul>li{
+            height: 100%;
+            width: 530px;
+            padding: 12px;
+            float: left;
+        }
+        #news>.bignews>ul>li>.image{
+            height: 282px;
+            width: 100%;
+        }
+        #news>.bignews>ul>li>.image>a>img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        #news>.bignews>ul>li>.content{
+            background-color:#ffffff;
+            padding: 20px;
+            position: relative;
+            height: 140px;
+        }
+        #news>.bignews>ul>li>.content>.kind{
+            display: block;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-weight: 550;
+            font-size: 11.5px;
+            position: absolute;
+            top: 20px;
+            color: #686869;
+            padding-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        #news>.bignews>ul>li>.content>.title{
+            text-align: left;
+            display: block;
+            font-size: 16px;
+            position: absolute;
+            top: 40px;
+            color: black;
+            padding-bottom: 20px;
+        }
+        #news>.bignews>ul>li>.content>.title>a{
+            text-decoration: none;
+            color: black;
+        }
+        #news>.bignews>ul>li>.content>.title>a:hover{
+            color: #007bbd;
+        }
+        #news>.bignews>ul>li>.content>.date{
+            display: block;
+            font-family: sans-serif;
+            font-size: 9px;
+            position: absolute;
+            bottom: 10px;
+            color: #686869;
+        }
+        #footer{
+            background-color: #ffffff;
+            text-align: center;
+            height: 280px;
+            width: 1240px;
+            margin: 15px auto;
+            border-radius: 20px;
+        }
+        #footer>.follow{
+            padding-top: 30px;
+            width: 400px;
+            margin: auto;
+            font-size: 17px;
+            font-family: monospace;
+        }
+        #footer>.follow>ul{
+            display:inline-block;
+        }
+        #footer>.follow>ul>li{
+            display: inline-block;
+            padding-left: 10px;
+            height: 42px;
+            width: 42px;
+        }
+        #footer>.follow>ul>li>a>img{
+            height: 100%;
+            width: 100%;
+        }
+        #footer>.follow>ul>li>a:hover>img{
+            color: #545553;
+        }
+        #footer>.logo{
+            display: inline-block;
+            height: 35px;
+            width: 80px;
+        }
+        #footer>.logo>img{
+            height: 100%;
+            width: 100%;
+            margin-top: 20px;
+        }
+        #footer>.about>ul{
+            display: inline-block;
+            height: 60px;
+            width: 1150px;
+            margin: 50px;
+        }
+        #footer>.about>ul>li{
+            display: inline-block;
+            padding-left: 20px;
+
+        }
+        #footer>.about>ul>li>a{
+            color: black;
+            font-size: 11.5px;
+        }
+        #footer>.about>ul>li>a:hover{
+            text-decoration: none;
+            color: #33b1ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div class="logo">
+            <a href="./index.html"><img src="/disney_logo_dark.png" alt=""></a>
+        </div>
+        <div class="mainmenu">
+            <ul>
+                <li><a href="">Disney+</a>
+                    <ul>
+                        <li><a href="">Find out more</a></li>
+                        <li><a href="">Introducing Disney+</a></li>
+                        <li><a href="">What's new on+</a></li>
+                        <li><a href="">Marvel on Disney+</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Movies</a>
+                    <ul>
+                        <li><a href="">Featured</a></li>
+                        <li><a href="">Ron's Gone Wrong</a></li>
+                        <li><a href="">Turning Red</a></li>
+                        <li><a href="">Encanto</a></li>
+                        <li><a href="">Eternals</a></li>
+                        <li><a href="">Lucasfilm Movies</a></li>
+                        <li><a href="">Mavel Movies</a></li>
+                        <li><a href="">Pixar Movies</a></li>
+                    </ul>
+                </li>
+                <li><a href="">shows</a>
+                    <ul>
+                        <li><a href="">What's On</a></li>
+                        <li><a href="">Frozen The Music</a></li>
+                        <li><a href="">The Lion King - UK Tour</a></li>
+                        <li><a href="">The Lion King - London</a></li>
+                        <li><a href="">Beauty and The Beast the Musical</a></li>
+                        <li><a href="">Mary Poppins</a></li>
+                        <li><a href="">Disney On Ice: Find Your Hero</a></li>
+                        <li><a href="">Toy Story in Concert</a></li>
+                        <li><a href="">The Muppet Christmas Carol in Concert</a></li>
+                        <li><a href="">Star Wars: Return of the Jedi in Concert</a></li>
+                    </ul>
+                </li>
+                <li><a href="">parks</a>
+                    <ul>
+                        <li><a href="">Disneyland Paris</a></li>
+                        <li><a href="">Walt Disney World in Florida</a></li>
+                        <li><a href="">Disney Cruise Line</a></li>
+                    </ul>
+                </li>
+                <li><a href="">news</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <span class="glyphicon glyphicon-search"></span>
+        </div>
+    </div>
+    <div id="news">Disney News
+        <div class="bignews">
+            <ul>
+                <li>
+                    <div class="image"><a href=""><img src="./12.movies.png" alt=""></a></div>
+                    <div class="content">
+                         <div class="kind">NEWS MARVEL</div>
+                         <div class="title"><a href="">An Interview with Meng’er Zhang of Marvel Studios’ Shang-Chi and The Legend of The Ten </a></div>
+                         <div class="date">September 10, 2021</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="image"><a href=""><img src="./13.movies.png" alt=""></a></div>
+                    <div class="content">
+                         <div class="kind">NEWS PIXAR</div>
+                         <div class="title"><a href="">The Cast and Crew of Marvel Studios’ Shang-Chi and The Legend of The Ten Rings Talks Action, Authenticity, and Acceptance</a></div>
+                         <div class="date">September 4, 2021</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="smallnews">
+                    <a href=""><img src="./9.Logo-king.png" alt=""></a>
+                    <div class="content">
+                    </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="follow">Follow Disney on:
+            <ul>
+                <li><a href=""><img src="https://lumiere-a.akamaihd.net/v1/images/icon_social_facebook_dark_9d7616bf.svg" alt=""></a></li>
+                <li><a href=""><img src="https://lumiere-a.akamaihd.net/v1/images/icon_social_instagram_dark_b5f8e532.svg" alt=""></a></li>
+                <li><a href=""><img src="https://lumiere-a.akamaihd.net/v1/images/icon_social_twitter_dark_1aecb98b.svg" alt=""></a></li>
+                <li><a href=""><img src="https://lumiere-a.akamaihd.net/v1/images/icon_social_youtube_dark_6136d901.svg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="logo"> <img src="./disney_logo_dark.png" alt=""></div>
+        <div class="about">
+            <ul>
+                <li><a href="">Help</a></li>
+                <li><a href="">Register</a></li>
+                <li><a href="">Sitemap</a></li>
+                <li><a href="">Terms of Use</a></li>
+                <li><a href="">UK & EU Privacy Rights</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Cookie Policy</a></li>
+                <li><a href="">Manage Your Cookie Settings</a></li>
+                <li><a href="">Interest-based Ads</a></li>
+                <li><a href="">Tax Stratery Statement</a></li>
+                <li><a href="">Internet Safety</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">The Walt Disney Company</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

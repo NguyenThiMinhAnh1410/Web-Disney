@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney | The Official HomePage</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            font-size: 14px;
+        }
+        body{
+            width: 1263px;
+        }
+        ul{
+            list-style: none;
+        }
+        #navbar{
+            width: 1253px;
+            height: 63px;
+            margin-left: 10px;
+        }
+        #navbar .logo{
+            width: 114px;
+            height: 100%;
+            padding: 15px 8px 7px 11px;
+            float: left;
+        }
+        #navbar .logo>img{
+            width: 100%;
+            height: 100%;
+        }
+        #navbar .mainmenu{
+            width: 780px;
+            height: 63px;
+            float: left;
+        }
+        #navbar .mainmenu>ul{
+            height: 100%;
+        }
+        #navbar .mainmenu>ul>li{
+            height: 100%;
+            float: left;
+            /*background-color: red;*/
+            text-transform: uppercase;
+            font-weight: bold;
+            /*border:1px solid yellow;*/
+            padding: 25px 2px 0px 11px;
+            position: relative;
+        }
+        #navbar .mainmenu>ul>li>a{
+            color: #222222;
+            text-decoration: none;
+            padding: 12px 12px 10px;
+        }
+        #navbar .mainmenu>ul>li>a:hover{
+            color: #007bbd;
+        }
+        #navbar .mainmenu>ul>li:hover{
+            color: #007bbd;
+        }
+        #navbar .mainmenu>ul>li::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #007bbd;
+            transition: width .3s;
+        }
+        #navbar .mainmenu>ul>li:hover::after {
+            width: 100%;
+        }
+        #navbar .mainmenu>ul>li>ul{
+            list-style-type:none;
+            position: absolute;
+            left: -10px;
+            top: 64px;
+            display:none;
+            background:#232B2D;
+            z-index: 1;
+            padding: 15px 25px;
+            width: max-content;
+        }
+        #navbar .mainmenu>ul>li:hover>ul{
+            display: block;
+            background-color: #232B2D;
+        }
+        #navbar .mainmenu>ul>li>ul>li{
+            padding: 10px 5px;
+        }
+        #navbar .mainmenu>ul>li>ul>li>a{
+            color: white;
+            text-decoration: none;
+            text-transform: none;
+            font-weight: 850;
+            font-size: 0.9rem;
+        }
+        #navbar .mainmenu>ul>li>ul>li>a:hover{
+            color: #33b1ff;
+            padding-left: 10px;
+            border-left: 2px solid #3ca0e7;
+            transition: all 0.3s ease;
+        }
+        #navbar .search{
+            float:left;
+            width:335px;
+            height:40px;
+            margin-top:13px;
+            background: #f5f5f5;
+            border-radius:5px;
+            padding: 10px 10px;
+            border: 1px solid #707070;
+            font-size: 14px;
+        }
+        #navbar .search>input{
+            background:#f5f5f5;
+            color: #707070;
+            border:none;
+            display: block;
+            float:left;
+            width: 287px;
+            padding-right: 10px;
+        }
+        #navbar .search>input:focus{
+            outline: none;
+        }
+        #navbar .search>span{
+            color:#007bbd;
+            font-size:1.25rem;
+            display:block;
+            float:left;
+            margin-left: 4px;
+        }
+        #header{
+            height: 70px;
+            width: 100%;
+            background-color:#01147b;
+            padding: 25px 375px;
+        }
+        #header .title{
+            display: block;
+            height: 37px;
+            width: 452px;
+            padding:10px auto;
+            float: left;
+        }
+        #header>a{
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+        }
+        #header .logodisneyplus{
+            padding: 100px auto;
+            float: left;
+            display: block;
+            height: 30px;
+            width: 55px;
+        }
+        #header .logodisneyplus>img{
+            height: 100%;
+            width: 100%;
+            margin: -7px 8px 4px 0px;
+        }
+        #space{
+            height: 20px;
+        }
+        #overview{
+            height: 540px;
+            background-color: #f1f2f3;
+            border: 1px solid #f1f2f3;
+        }
+        #overview>ul{
+            display: block;
+            width: 1145px;
+            height: 520px;
+            margin: 20px 60px;
+        }
+        #overview>ul>li{
+            display: block;
+            float: left;
+            width: 265px;
+            height: 490px;
+            margin: 0 10px;
+            background-color: white;
+            position: relative;
+        }
+        #overview>ul>li>.overview-image{
+            height: 300px;
+            width: 265px;
+            overflow: hidden;
+        }
+        #overview>ul>li .overview-image>a>img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        #overview>ul>li>.overview-image:hover>a>img{
+            transform: scale(1.03);
+            transition: 0.5s;
+            height: 300px;
+            width: 265px;
+        }
+        #overview>ul>li>.innercontent{
+            padding: 35px 35px;
+        }
+        #overview>ul>li>.innercontent>a{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18px;
+            color: black;
+            text-decoration: none;
+        }
+        #overview>ul>li>.innercontent>.info{
+            font-family: cursive;
+            font-size: 12px;
+            padding-top: 10px;
+        }
+        #overview>ul>li>.innercontent>.kind{
+            display: block;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-weight: 790;
+            font-size: 11.5px;
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 20px;
+        }
+        #maincontent{
+            background-color: #f1f2f3;
+        }
+        #maincontent .disneyplus{
+            height: 775px;
+            background-color: #061435;
+        }
+        #maincontent .disneyplus>h1{
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 25px;
+            text-align: center;
+            padding: 45px;
+        }
+        #maincontent>.disneyplus>ul{
+            display: block;
+            width: 1145px;
+            height: 470px;
+            margin: 0px 60px;
+        }
+        #maincontent>.disneyplus>ul>li{
+            display: block;
+            float: left;
+            width: 542px;
+            height: 470px;
+            margin: 0 10px;
+            background-color: #0b2c66;
+            position: relative;
+        }
+        #maincontent>.disneyplus>ul>li>.disneyimage{
+            height: 305px;
+            width: 542px;
+            overflow: hidden;
+        }
+        #maincontent>.disneyplus>ul>li>.disneyimage:hover>a>img{
+            transform: scale(1.03);
+            transition: 0.5s;
+        }
+        #maincontent>.disneyplus>ul>li>.disneyimage>a>img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        #maincontent>.disneyplus>ul>li>.note{
+            color: white;
+            padding: 35px 35px;
+        }
+        #maincontent>.disneyplus>ul>li>.note>a{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+        }
+        #maincontent>.disneyplus>ul>li>.note>.info{
+            font-family: cursive;
+            font-size: 12px;
+            padding-top: 10px;
+        }
+        #maincontent>.disneyplus>ul>li>.note>.kind{
+            display: block;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-weight: 790;
+            font-size: 11.5px;
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 20px;
+        }
+        #maincontent>.disneyplus>.image{
+            display: block;
+            height: 38px;
+            width: 900px;
+            margin: 40px auto 30px;
+        }
+        #maincontent>.disneyplus>.image>img{
+            height: 100%;
+            width: 100%;
+        }
+        #maincontent>.disneyplus>.subcribe{
+            display: block;
+            height: 50px;
+            width: 240px;
+            background-color: white;
+            border-radius: 40px;
+            margin: auto;
+        }
+        #maincontent>.disneyplus>.subcribe>a {
+            display:block;
+            color: #222222;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin: auto;
+        }
+        #maincontent>.disneyplus>.subcribe:hover {
+            background-color: #ebebeb;
+        }
+        #maincontent>.movies>h1{
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 30px;
+            text-align: center;
+            padding: 30px;
+        }
+        #maincontent>.movies>ul {
+            background-color: #f2f3f5;
+            height: 850px;
+            margin: 0 100px;
+            padding: 0 50px;
+        }
+        #maincontent>.movies>ul>li {
+            display: block;
+            border-bottom: 1px dashed #051336;
+            margin-bottom: 20px;
+            padding-bottom: 265px;
+        }
+        #maincontent>.movies>ul>li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        #maincontent>.movies>ul>li>.image {
+            float: left;
+            width: 160px;
+            height: 240px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        #maincontent>.movies>ul>li>.image:hover>a>img{
+            transform: scale(1.03);
+            transition: 0.5s;
+        }
+        #maincontent>.movies>ul>li>.image>a>img{
+            width: 100%;
+            height: 100%;
+        }
+        #maincontent>.movies>ul>li>.detail {
+            float: right;
+            width: 800px;
+            padding-left: 40px;
+        }
+        #maincontent>.movies>ul>li>.detail>.name {
+            color: #1f1f1f;
+            margin-bottom: 6px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        #maincontent>.movies>ul>li>.detail>.name>a{
+            text-decoration: none;
+        }
+        #maincontent>.movies>ul>li>.detail>.item {
+            color: #1f1f1f;
+            margin-bottom: 5px;
+            font-size: 13px;
+            font-family: cursive;
+        }
+        #maincontent>.movies>ul>li>.detail>.item::before{
+            content: "* ";
+        }
+        #maincontent>.movies>ul>li>.detail>a{
+            display: inline-block;
+            background-color: #051366;
+            border-radius: 20px;
+            margin: 5px;
+            padding: 5px;
+            font-size: 11.5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #maincontent>.movies>ul>li>.detail>a:hover{
+            color: #051366;
+            background-color: #f1f2f3;
+            border: 1px solid #061435;
+            margin: 4px;
+        }
+        #maincontent>.movies>ul>li>.detail>p{
+            padding: 5px;
+        }
+        #maincontent>.title{
+            background-image: url("./11.Show-title.png");
+            height: 90px;
+            background-size: 1263px 90px;
+        }
+        #maincontent>.shows{
+            height: 450px;
+            background-image:url("./10.Show-king.png");
+            background-size: 1263px 450px;
+            position: relative;
+        }
+        #maincontent>.shows>a>.logoking{
+            height: 110px;
+            width: 400px;
+            position: absolute;
+            top: 215px;
+            left: 50px;
+        }
+        #maincontent>.shows>a>.logoking>img{
+            height: 100%;
+            width: 100%;
+        }
+        #maincontent>.shows>a>.more{
+            height: 50px;
+            width: 240px;
+            position: absolute;
+            left: 110px;
+            top: 350px;
+            padding:15px;
+            background-color: #000000;
+            border-radius: 40px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 15px;
+            text-transform: uppercase;
+            font-family: unset;
+            font-weight: 560;
+        }
+        #footer{
+            background-color: #f1f2f3;
+            text-align: center;
+            height: 280px;
+            width: 100%;
+            margin: 15px auto;
+            /*border-radius: 20px;*/
+        }
+        #footer>.follow{
+            padding-top: 30px;
+            width: 400px;
+            margin: auto;
+            font-size: 17px;
+            font-family: monospace;
+        }
+        #footer>.follow>ul{
+            display:inline-block;
+        }
+        #footer>.follow>ul>li{
+            display: inline-block;
+            padding-left: 10px;
+            height: 42px;
+            width: 42px;
+        }
+        #footer>.follow>ul>li>a>img{
+            height: 100%;
+            width: 100%;
+        }
+        #footer>.follow>ul>li>a:hover>img{
+            color: #545553;
+        }
+        #footer>.logo{
+            display: inline-block;
+            height: 35px;
+            width: 80px;
+        }
+        #footer>.logo>img{
+            height: 100%;
+            width: 100%;
+            margin-top: 20px;
+        }
+        #footer>.about>ul{
+            display: inline-block;
+            height: 60px;
+            width: 1150px;
+            margin: 50px;
+        }
+        #footer>.about>ul>li{
+            display: inline-block;
+            padding-left: 20px;
+
+        }
+        #footer>.about>ul>li>a{
+            color: black;
+            font-size: 11.5px;
+        }
+        #footer>.about>ul>li>a:hover{
+            text-decoration: none;
+            color: #33b1ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div class="logo">
+            <img src="./disney_logo_dark.png" alt="">
+        </div>
+        <div class="mainmenu">
+            <ul>
+                <li><a href="">Disney+</a>
+                    <ul>
+                        <li><a href="">Find out more</a></li>
+                        <li><a href="">Introducing Disney+</a></li>
+                        <li><a href="">What's new on+</a></li>
+                        <li><a href="">Marvel on Disney+</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Movies</a>
+                    <ul>
+                        <li><a href="">Featured</a></li>
+                        <li><a href="">Ron's Gone Wrong</a></li>
+                        <li><a href="">Turning Red</a></li>
+                        <li><a href="">Encanto</a></li>
+                        <li><a href="">Eternals</a></li>
+                        <li><a href="">Lucasfilm Movies</a></li>
+                        <li><a href="">Mavel Movies</a></li>
+                        <li><a href="">Pixar Movies</a></li>
+                    </ul>
+                </li>
+                <li><a href="">shows</a>
+                    <ul>
+                        <li><a href="">What's On</a></li>
+                        <li><a href="">Frozen The Music</a></li>
+                        <li><a href="">The Lion King - UK Tour</a></li>
+                        <li><a href="">The Lion King - London</a></li>
+                        <li><a href="">Beauty and The Beast the Musical</a></li>
+                        <li><a href="">Mary Poppins</a></li>
+                        <li><a href="">Disney On Ice: Find Your Hero</a></li>
+                        <li><a href="">Toy Story in Concert</a></li>
+                        <li><a href="">The Muppet Christmas Carol in Concert</a></li>
+                        <li><a href="">Star Wars: Return of the Jedi in Concert</a></li>
+                    </ul>
+                </li>
+                <li><a href="">parks</a>
+                    <ul>
+                        <li><a href="">Disneyland Paris</a></li>
+                        <li><a href="">Walt Disney World in Florida</a></li>
+                        <li><a href="">Disney Cruise Line</a></li>
+                    </ul>
+                </li>
+                <li><a href="./news.html">news</a></li>
+            </ul>
+        </div>
+        <!--
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <span class="glyphicon glyphicon-search"></span>
+        </div>
+        -->
+    </div>
+    <div id="header"><a href="">
+        <div class="title">The greatest stories, all in one place. | Subcribe now</div>
+        <div class="logodisneyplus"><img src="https://lumiere-a.akamaihd.net/v1/images/disneyplus-white_50264639.svg?region=0,0,48,36" alt=""></div>
+    </a></div>
+    <div id="space"></div>
+    <div id="overview">
+        <ul>
+            <li>
+                <div class="overview-image"><a href=""><img src="./1.Podcast.png" alt=""></a></div>
+                <div class="innercontent">
+                     <a href="">Journey to Magic Podcast</a>
+                     <p class="info">A Disney Parks Podcast with Giovanna Fletcher</p>
+                     <p class="kind">WALT DISNEY TRAVEL COMPANY</p>
+                </div>
+            </li>
+            <li>
+                <div class="overview-image"><a href=""><img src="./2.King.png" alt=""></a></div>
+                <div class="innercontent">
+                     <a href="">The Lion King On Tour</a>
+                     <p class="info">Across the UK and Ireland.</p>
+                     <p class="kind">shows</p>
+                </div>
+            </li>
+            <li>
+                <div class="overview-image"><a href=""><img src="./3.Frozen.png" alt=""></a></div>
+                <div class="innercontent">
+                     <a href="">Frozen The West End Musical</a>
+                     <p class="info">Theatre Royal Drury Lane, London.</p>
+                     <p class="kind">shows</p>
+                </div>
+            </li>
+            <li>
+                <div class="overview-image"><a href=""><img src="./4.Beauty&beast.png" alt=""></a></div>
+                <div class="innercontent">
+                     <a href="">Beauty ang the Beast The Musical</a>
+                     <p class="info">On tour across the UK.</p>
+                     <p class="kind">shows</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="maincontent">
+        <div class="disneyplus">
+            <h1>What's on Disney+</h1>
+            <ul>
+                <li>
+                    <div class="disneyimage"><a href=""><img src="./5.Mavel.png" alt=""></a></div>
+                    <div class="note">
+                         <a href="">Black Widow</a>
+                         <p class="info">Now streaming to all Disney+ subscribers.</p>
+                         <p class="kind">DISNEY+</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="disneyimage"><a href=""><img src="./6.Disney.png" alt=""></a></div>
+                    <div class="note">
+                         <a href="">Just Beyond</a>
+                         <p class="info">Inspired by the writings of R.L. Stine, Just Beyond is a supernatural anthology series.</p>
+                         <p class="kind">DISNEY+</p>
+                    </div>
+                </li>
+            </ul>
+            <div class="image"><img src="./14.disney+.png" alt=""></div>
+            <div class="subcribe">
+                <a href="">subcribe now*</a>
+            </div>
+            
+        </div>
+        <div class="movies">
+            <h1>Movies</h1>
+            <ul>
+                <li>
+                    <div class="image"><a href=""><img src="./7.Ron'sgone.png" alt=""></a></div>
+                    <div class="detail">
+                        <div class="name"><a href="">Ron's Gone Wrong</a></div>
+                        <div class="item">15 October 2021</div>
+                        <div class="item">Animation</div>
+                        <div class="item">Produced By: Julie Lockhart, Lara Breay</div>
+                        <a href="">Book tickets</a>
+                        <a href="">Trailer</a>
+                        <p>The story of Barney, a socially awkward middle-schooler and Ron, his new walking, talking, digitally-connected device, which is supposed to be his "Best Friend out of the Box". Ron’s hilarious malfunctions, set against the backdrop of the social media age, launch them into an action-packed journey in which boy and robot come to terms with the wonderful messiness of true friendship.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="image"><a href=""><img src="./8.Encanto.png" alt=""></a></div>
+                    <div class="detail">
+                        <div class="name"><a href="">Encanto</a> </div>
+                        <div class="item">24 November 2021</div>
+                        <div class="item">Animation, Adventure, Fantasy</div>
+                        <div class="item">Produced By: Yvett Merino, Clark Spencer</div>
+                        <a href="">Book tickets</a>
+                        <a href="">Trailer</a>
+                        <p>The tale of an extraordinary family, the Madrigals, who live hidden in the mountains of Colombia, in a magical house, in a vibrant town, in a wondrous, charmed place called an Encanto.  The magic of the Encanto has blessed every child in the family with a unique gift from super strength to the power to heal—every child except one, Mirabel. But when she discovers that the magic surrounding the Encanto is in danger, Mirabel decides that she, the only ordinary Madrigal, might just be her exceptional family’s last hope.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="image"><a href=""><img src="./15.Shang-chi.png" alt=""></a></div>
+                    <div class="detail">
+                        <div class="name"><a href="">Shang-Chi and the Legend of the Ten Rings</a></div>
+                        <div class="item">3 September 2021</div>
+                        <div class="item">Action, Adventure </div>
+                        <div class="item">Produced By: Kevin Feige, Jonathan Schwartz</div>
+                        <a href="">Book tickets</a>
+                        <a href="">Trailer</a>
+                        <p>Marvel Studios’ SHANG-CHI AND THE LEGEND OF THE TEN RINGS stars Simu Liu as Shang-Chi, who must face the past he thought he left behind and confront his father, leader of the dangerous Ten Rings organization. The film also stars Awkwafina as Shang-Chi’s friend Katy, Meng’er Zhang, Fala Chen, and Florian Munteanu, with Michelle Yeoh as Ying Nan and Tony Leung as Xu Wenwu. </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="title"></div>
+        <div class="shows"><a href="">
+            <div class="logoking"><img src="./9.Logo-king.png" alt=""></div>
+            <div class="more">Find out more</div>
+        </a></div>
+    </div>
+    <div id="footer">
+        <div class="follow">Follow Disney on:
+            <ul>
+                <li><a href=""><img src="https://lumiere-a.akamaihd.net/v1/images/icon_social_facebook_dark_9d7616bf.svg" alt=""></a></li>
+                <li><a href=""><img src="https://lumiere-a.akamaihd.net/v1/images/icon_social_instagram_dark_b5f8e532.svg" alt=""></a></li>
+                <li><a href=""><img src="https://lumiere-a.akamaihd.net/v1/images/icon_social_twitter_dark_1aecb98b.svg" alt=""></a></li>
+                <li><a href=""><img src="https://lumiere-a.akamaihd.net/v1/images/icon_social_youtube_dark_6136d901.svg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="logo"> <img src="./disney_logo_dark.png" alt=""></div>
+        <div class="about">
+            <ul>
+                <li><a href="">Help</a></li>
+                <li><a href="">Register</a></li>
+                <li><a href="">Sitemap</a></li>
+                <li><a href="">Terms of Use</a></li>
+                <li><a href="">UK & EU Privacy Rights</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Cookie Policy</a></li>
+                <li><a href="">Manage Your Cookie Settings</a></li>
+                <li><a href="">Interest-based Ads</a></li>
+                <li><a href="">Tax Stratery Statement</a></li>
+                <li><a href="">Internet Safety</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">The Walt Disney Company</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
